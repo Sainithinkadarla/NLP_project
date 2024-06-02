@@ -1,3 +1,7 @@
 chats/
-
 Documents/
+flask_app/bin
+flask_app/lib
+flask_app/share
+flask_app/include
+ 
