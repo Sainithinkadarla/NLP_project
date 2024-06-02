@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Analysis</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Chat Analysis</h1>
+        <form action="/analyze" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="chat_file">Upload Chat File</label>
+                <input type="file" class="form-control-file" id="chat_file" name="chat_file" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Analyze</button>
+        </form>
+    </div>
+</body>
+</html>

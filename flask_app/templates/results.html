@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Analysis Results</h1>
+        <h2>Common Words</h2>
+        <ul>
+            {% for word, count in common_words %}
+                <li>{{ word }}: {{ count }}</li>
+            {% endfor %}
+        </ul>
+        <h2>Sentiment Trends</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Start Sentiment</th>
+                    <th>End Sentiment</th>
+                    <th>Most Common Sentiment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for log in sentiment_logs %}
+                <tr>
+                    <td>{{ log['Date'] }}</td>
+                    <td>{{ log['start_sentiment'] }}</td>
+                    <td>{{ log['end_sentiment'] }}</td>
+                    <td>{{ log['most_common_sentiment'] }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Word Cloud</h2>
+        <img src="{{ url_for('static', filename='images/wordcloud.png') }}" alt="Word Cloud">
+        <h2>Message Volumes Over Time</h2>
+        <img src="{{ url_for('static', filename='images/message_volumes.png') }}" alt="Message Volumes">
+    </div>
+</body>
+</html>

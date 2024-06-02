@@ -1,0 +1,16 @@
+body {
+    background-color: #f0f8ff;
+}
+
+h1 {
+    color: #4682b4;
+}
+
+.btn-primary {
+    background-color: #4682b4;
+    border-color: #4682b4;
+}
+
+.table {
+    background-color: #ffffff;
+}
