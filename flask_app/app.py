@@ -178,7 +178,8 @@ def analyze():
     plt.xlabel('Date')
     plt.ylabel('Average Sentiment')
     plt.grid(True)
-    plt.show()
+    plt.savefig('static/images/sentiment_trend.png')
+    plt.close()
 
     message_counts = data.groupby('Date').size().reset_index(name='Message Count')
     plt.figure(figsize=(14, 7))
