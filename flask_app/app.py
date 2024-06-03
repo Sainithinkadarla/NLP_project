@@ -155,9 +155,30 @@ def analyze():
     relevant_topics = most_relevant(topic_distribution)
     data['LDA'] = relevant_topics
 
+    print(fdist)
     # Visualization for word cloud and message volumes
     wordcloud = WordCloud(width=800, height=400, background_color='white').generate_from_frequencies(fdist)
-    wordcloud.to_file('static/images/wordcloud.png')
+    wordcloud.to_file('./static/images/wordcloud.png')
+    
+    def get_sentiment(text):
+        sentiment = sentiments.polarity_scores(text)
+        return sentiment['compound']
+
+    data['sentiment_compound'] = data['Tokenized_mgs'].apply(get_sentiment)
+
+    # Aggregate sentiment scores by date
+    data["Date"] = pd.to_datetime(data['Date'])
+    data['Date'] = data['Date'].dt.date
+    daily_sentiment = data.groupby('Date')['sentiment_compound'].mean().reset_index()
+
+    # Plot sentiment trends
+    plt.figure(figsize=(10, 5))
+    sns.lineplot(data=daily_sentiment, x='Date', y='sentiment_compound', marker='o')
+    plt.title('Sentiment Trend')
+    plt.xlabel('Date')
+    plt.ylabel('Average Sentiment')
+    plt.grid(True)
+    plt.show()
 
     message_counts = data.groupby('Date').size().reset_index(name='Message Count')
     plt.figure(figsize=(14, 7))
@@ -173,4 +194,4 @@ def analyze():
     return render_template('results.html', common_words=common_words, sentiment_logs=sentiment_logs.to_dict('records'))
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host='0.0.0.0', port=5050)
