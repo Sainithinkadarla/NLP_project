@@ -4,4 +4,9 @@ flask_app/bin
 flask_app/lib
 flask_app/share
 flask_app/include
- 
+*/*bin
+*/*lib
+*/*lib64
+*/*include
+pyvenv.cfg
+
