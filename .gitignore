@@ -8,5 +8,7 @@ flask_app/include
 */*lib
 */*lib64
 */*include
+*/*share
 pyvenv.cfg
+
 
