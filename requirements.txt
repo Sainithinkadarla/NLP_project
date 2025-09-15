@@ -6,3 +6,6 @@ matplotlib
 wordcloud
 nltk
 scikit-learn
+reportlab
+python-multipart
+fastapi
