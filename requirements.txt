@@ -9,3 +9,4 @@ scikit-learn
 reportlab
 python-multipart
 fastapi
+uvicorn
