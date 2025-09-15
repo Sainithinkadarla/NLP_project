@@ -17,7 +17,7 @@ from nltk.sentiment.vader import SentimentIntensityAnalyzer
 import warnings
 import string
 import io
-from fpdf import FPDF
+
 from reportlab.lib.pagesizes import letter
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Image
 from reportlab.lib.styles import getSampleStyleSheet
