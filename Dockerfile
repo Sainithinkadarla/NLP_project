@@ -14,13 +14,11 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY FastAPI/ .
 
 # Download NLTK data required by your script
-# This step is crucial because the script downloads it at runtime
-# We'll do it during the build process to avoid runtime issues
+
 RUN python -c "import nltk; nltk.download('vader_lexicon'); nltk.download('stopwords'); nltk.download('punkt'); nltk.download('wordnet')"
 
 # Make port 8000 available to the world outside this container
 EXPOSE 8000
 
 # Run uvicorn to serve the application
-# Assuming your main script is named 'main.py'
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
