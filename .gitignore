@@ -4,11 +4,16 @@ flask_app/bin
 flask_app/lib
 flask_app/share
 flask_app/include
+flask_app/static*
 */*bin
 */*lib
 */*lib64
 */*include
 */*share
 pyvenv.cfg
+*/*__pycache__
+FastAPI/temp
+FastAPI/static
+FastAPI/images
 
 
